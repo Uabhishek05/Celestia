@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#efe7e1] bg-mesh-light font-sans text-ink antialiased transition-colors duration-300 dark:bg-mesh-dark dark:text-pearl;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  * {
+    @apply border-white/20;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    @apply rounded-[28px] border border-white/20 bg-[#f4efeb] shadow-glass backdrop-blur-xl dark:border-white/10 dark:bg-white/5;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold tracking-tight text-wine dark:text-pearl md:text-5xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-wine px-5 py-3 text-sm font-semibold text-white transition hover:bg-clay;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-wine/15 bg-[#f1e8e2] px-5 py-3 text-sm font-semibold text-wine transition hover:border-wine/30 hover:bg-[#f6efea] dark:border-white/15 dark:bg-white/5 dark:text-pearl;
+  }
+
+  .theme-field {
+    @apply w-full rounded-[22px] border border-white/10 bg-[#eee4dd] px-4 py-3 text-sm text-wine outline-none transition placeholder:text-wine/45 hover:border-wine/20 hover:bg-[#f1e7e0] focus:border-wine/35 focus:bg-[#f4ebe5] dark:border-white/10 dark:bg-white/5 dark:text-pearl dark:placeholder:text-pearl/40 dark:hover:border-white/20 dark:focus:border-white/30 dark:focus:bg-white/10;
+  }
+
+  .theme-select {
+    @apply theme-field appearance-none pr-10;
+    background-image:
+      linear-gradient(45deg, transparent 50%, rgba(120, 72, 63, 0.95) 50%),
+      linear-gradient(135deg, rgba(120, 72, 63, 0.95) 50%, transparent 50%);
+    background-position:
+      calc(100% - 20px) calc(50% - 2px),
+      calc(100% - 14px) calc(50% - 2px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+  }
+
+  .dark .theme-select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, rgba(244, 236, 231, 0.92) 50%),
+      linear-gradient(135deg, rgba(244, 236, 231, 0.92) 50%, transparent 50%);
+  }
+
+  .theme-select option {
+    color: #f4ece7;
+    background: #2c221f;
+  }
+
+  .theme-stepper {
+    @apply flex items-center rounded-[22px] border border-white/10 bg-[#eee4dd] px-2 py-2 dark:border-white/10 dark:bg-white/5;
+  }
+
+  .theme-stepper-value {
+    @apply min-w-12 text-center text-sm font-semibold text-wine dark:text-pearl;
+  }
+
+  .theme-stepper-value::-webkit-outer-spin-button,
+  .theme-stepper-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .theme-stepper-value[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .theme-stepper-button {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-wine/10 bg-[#f1e6df] text-wine transition hover:bg-wine hover:text-white dark:border-white/15 dark:bg-white/10 dark:text-pearl dark:hover:bg-white dark:hover:text-wine;
+  }
+}
