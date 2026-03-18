@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../components/product/ProductCard";
 import Seo from "../components/common/Seo";
 import { useProducts } from "../hooks/useProducts";
+import { toAbsoluteUrl } from "../utils/siteMetadata";
 
 export default function CategoryPage() {
   const { categoryName } = useParams();
@@ -29,7 +30,18 @@ export default function CategoryPage() {
 
   return (
     <section className="container-shell py-10">
-      <Seo title={category} description={`Shop ${category} with premium finishes and curated styling.`} />
+      <Seo
+        title={category}
+        description={`Shop ${category} with premium finishes and curated styling.`}
+        path={`/category/${encodeURIComponent(category)}`}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: `${category} | Celestia Premium`,
+          url: toAbsoluteUrl(`/category/${encodeURIComponent(category)}`),
+          description: `Shop ${category} with premium finishes and curated styling.`
+        }}
+      />
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-clay">Category edit</p>

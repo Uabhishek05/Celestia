@@ -5,6 +5,7 @@ import ProductCard from "../components/product/ProductCard";
 import Seo from "../components/common/Seo";
 import { useStore } from "../context/StoreContext";
 import { formatCurrency } from "../utils/format";
+import { toAbsoluteUrl } from "../utils/siteMetadata";
 
 export default function ProductPage() {
   const { productId } = useParams();
@@ -27,7 +28,35 @@ export default function ProductPage() {
 
   return (
     <section className="container-shell py-10">
-      <Seo title={product.name} description={product.description} />
+      <Seo
+        title={product.name}
+        description={product.description}
+        path={`/product/${product.slug || product._id}`}
+        type="product"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.name,
+          description: product.description,
+          category: product.category,
+          image: product.images?.map((image) => toAbsoluteUrl(image)),
+          sku: product._id,
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "INR",
+            price: product.price,
+            availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            url: toAbsoluteUrl(`/product/${product.slug || product._id}`)
+          },
+          aggregateRating: product.rating
+            ? {
+                "@type": "AggregateRating",
+                ratingValue: product.rating,
+                reviewCount: product.reviews || 1
+              }
+            : undefined
+        }}
+      />
       <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
         <div className="space-y-4">
           <div className="glass-panel overflow-hidden p-3">

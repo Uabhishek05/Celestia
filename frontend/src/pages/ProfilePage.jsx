@@ -31,7 +31,7 @@ export default function ProfilePage() {
 
   return (
     <section className="container-shell py-10">
-      <Seo title="Profile" description="Manage your profile and review recent orders." />
+      <Seo title="Profile" description="Manage your profile and review recent orders." path="/profile" noindex />
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         <aside className="glass-panel p-6">
           <h1 className="section-title text-4xl">Profile</h1>

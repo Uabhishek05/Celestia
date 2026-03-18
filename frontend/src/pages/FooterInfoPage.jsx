@@ -22,7 +22,11 @@ export default function FooterInfoPage() {
 
   return (
     <section className="container-shell py-10">
-      <Seo title="Store Guide" description="Helpful store information, category overviews, and support details." />
+      <Seo
+        title="Store Guide"
+        description="Helpful store information, category overviews, and support details."
+        path={sectionId ? `/footer-info?section=${sectionId}` : "/footer-info"}
+      />
       <div className="mx-auto max-w-5xl">
         <div className="glass-panel p-8">
           <p className="text-xs uppercase tracking-[0.24em] text-clay">Celestia Guide</p>

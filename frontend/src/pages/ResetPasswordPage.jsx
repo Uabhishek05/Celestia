@@ -99,7 +99,7 @@ export default function ResetPasswordPage() {
 
   return (
     <section className="container-shell py-10">
-      <Seo title="Reset Password" description="Set a new password for your Celestia account." />
+      <Seo title="Reset Password" description="Set a new password for your Celestia account." path="/reset-password" noindex />
       <div className="mx-auto max-w-xl glass-panel p-8">
         <h1 className="section-title text-center">Reset your password</h1>
         <p className="mt-3 text-center text-sm text-ink/65 dark:text-pearl/65">

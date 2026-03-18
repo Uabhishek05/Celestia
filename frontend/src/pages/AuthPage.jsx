@@ -225,7 +225,12 @@ export default function AuthPage({ initialMode = "login" }) {
 
   return (
     <section className="container-shell py-10">
-      <Seo title={mode === "login" ? "Login" : "Register"} description="Login or create your Celestia Premium account." />
+      <Seo
+        title={mode === "login" ? "Login" : "Register"}
+        description="Login or create your Celestia Premium account."
+        path={mode === "login" ? "/auth" : "/register"}
+        noindex
+      />
       <div className="mx-auto max-w-xl glass-panel p-8">
         <div className="mx-auto flex w-fit rounded-full border border-white/20 bg-white/40 p-1 dark:bg-white/5">
           <button

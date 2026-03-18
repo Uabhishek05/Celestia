@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <section className="container-shell py-10">
-      <Seo title="Forgot Password" description="Request a Celestia password reset email." />
+      <Seo title="Forgot Password" description="Request a Celestia password reset email." path="/forgot-password" noindex />
       <div className="mx-auto max-w-xl glass-panel p-8">
         <h1 className="section-title text-center">Forgot your password?</h1>
         <p className="mt-3 text-center text-sm text-ink/65 dark:text-pearl/65">
