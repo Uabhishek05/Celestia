@@ -6,7 +6,7 @@ import Seo from "../components/common/Seo";
 import { useStore } from "../context/StoreContext";
 import api from "../utils/api";
 
-const authBaseUrl = `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/auth`;
+const apiBaseUrl = api.defaults.baseURL || "http://localhost:5000/api";
 
 function loadGoogleScript() {
   return new Promise((resolve) => {
@@ -38,26 +38,13 @@ export default function AuthPage({ initialMode = "login" }) {
   const navigate = useNavigate();
 
   async function postAuth(path, payload) {
-    let response;
-
     try {
-      response = await fetch(`${authBaseUrl}${path}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
+      const { data } = await api.post(`/auth${path}`, payload);
+      return data;
     } catch (error) {
-      throw new Error("Backend is unreachable on http://localhost:5000. Start the API server and database, then try again.");
+      const message = error?.response?.data?.message;
+      throw new Error(message || `Backend is unreachable on ${apiBaseUrl}. Start the API server and database, then try again.`);
     }
-
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      throw new Error(data.message || "Authentication request failed");
-    }
-
-    return data;
   }
 
   useEffect(() => {
@@ -79,7 +66,7 @@ export default function AuthPage({ initialMode = "login" }) {
         }
       } catch (error) {
         if (!ignore) {
-          setBackendNotice("Backend is offline on http://localhost:5000. Start the backend server before logging in.");
+          setBackendNotice(`Backend is offline on ${apiBaseUrl}. Start the backend server before logging in.`);
         }
       }
     }
