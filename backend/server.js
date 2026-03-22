@@ -7,7 +7,8 @@ import { ensureStoreCollections } from "./utils/ensureStoreCollections.js";
 dotenv.config();
 
 const port = process.env.PORT || 5000;
-const host = process.env.HOST || "0.0.0.0";
+const isHostedRuntime = Boolean(process.env.RENDER) || process.env.NODE_ENV === "production";
+const host = isHostedRuntime ? "0.0.0.0" : process.env.HOST || "127.0.0.1";
 
 startDbConnectionWithRetry();
 
