@@ -18,6 +18,9 @@ export default function Navbar({ onMenuToggle }) {
           Celestia
         </Link>
 
+        {/* Mobile spacer to push actions right */}
+        <div className="flex-1 lg:hidden" />
+
         {/* Desktop Navigation */}
         <nav className="hidden flex-1 items-center justify-center gap-6 lg:flex">
           {["Shop", "Collections", "Gifting", ...(user?.role === "admin" ? ["Admin"] : [])].map((item) => (
@@ -31,8 +34,11 @@ export default function Navbar({ onMenuToggle }) {
           ))}
         </nav>
 
+        {/* Spacer to push actions right */}
+        <div className="flex-1 hidden lg:block" />
+
         {/* Search (Desktop Only) */}
-        <div className="hidden flex-1 items-center justify-center md:flex px-4">
+        <div className="hidden flex-none items-center md:flex px-2">
           <label className="glass-panel flex w-full max-w-sm items-center gap-2 px-3 py-2">
             <Search className="h-4 w-4 text-ink/50 dark:text-pearl/50" />
             <input
@@ -61,9 +67,9 @@ export default function Navbar({ onMenuToggle }) {
             )}
           </Link>
 
-          {/* User Profile (Desktop) */}
-          <Link to="/profile" className="hidden sm:block rounded-full p-2 hover:bg-white/10 transition">
-            <User2 className="h-5 w-5" />
+          {/* User Profile (Desktop sm+) */}
+          <Link to="/profile" className="hidden sm:block rounded-full p-1.5 sm:p-2 hover:bg-white/10 transition">
+            <User2 className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>
 
           {/* Cart */}
