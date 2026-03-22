@@ -147,7 +147,7 @@ export default function AuthPage({ initialMode = "login" }) {
     return () => {
       ignore = true;
     };
-  }, [authenticate, mode, navigate]);
+  }, [authenticate, navigate]);
 
   const handleGoogleClick = () => {
     if (!googleReady) {

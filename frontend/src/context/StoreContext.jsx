@@ -7,6 +7,8 @@ import { normalizeProduct } from "../utils/normalizeProduct";
 
 const StoreContext = createContext(null);
 
+const isMongoObjectId = (value) => typeof value === "string" && /^[a-f0-9]{24}$/i.test(value);
+
 const readLocal = (key, fallback) => {
   try {
     const value = localStorage.getItem(key);
@@ -97,8 +99,10 @@ export function StoreProvider({ children }) {
         const hasGuestState = cartItems.length > 0 || wishlist.length > 0;
         const { data } = hasGuestState
           ? await api.post("/auth/sync-store", {
-              cartItems: cartItems.map((item) => ({ productId: item._id, quantity: item.quantity })),
-              wishlistIds: wishlist.map((item) => item._id)
+              cartItems: cartItems
+                .filter((item) => isMongoObjectId(item?._id))
+                .map((item) => ({ productId: item._id, quantity: item.quantity })),
+              wishlistIds: wishlist.map((item) => item._id).filter(isMongoObjectId)
             })
           : await api.get("/auth/profile");
         if (!ignore) {
@@ -136,7 +140,7 @@ export function StoreProvider({ children }) {
     });
     toast.success(`${normalizedProduct.name} added to cart`);
 
-    if (token && normalizedProduct._id) {
+    if (token && isMongoObjectId(normalizedProduct._id)) {
       api
         .put("/auth/cart/item", { productId: normalizedProduct._id, quantity: quantity + (cartItems.find((item) => item._id === normalizedProduct._id)?.quantity || 0) })
         .then(({ data }) => applyServerUserState(data))
@@ -151,7 +155,7 @@ export function StoreProvider({ children }) {
       )
     );
 
-    if (token) {
+    if (token && isMongoObjectId(productId)) {
       api
         .put("/auth/cart/item", { productId, quantity: Math.max(1, quantity) })
         .then(({ data }) => applyServerUserState(data))
@@ -163,7 +167,7 @@ export function StoreProvider({ children }) {
     setCartItems((current) => current.filter((item) => item._id !== productId));
     toast.success("Item removed from cart");
 
-    if (token) {
+    if (token && isMongoObjectId(productId)) {
       api
         .delete(`/auth/cart/item/${productId}`)
         .then(({ data }) => applyServerUserState(data))
@@ -181,7 +185,7 @@ export function StoreProvider({ children }) {
         : [...current, normalizedProduct];
     });
 
-    if (token && normalizedProduct._id) {
+    if (token && isMongoObjectId(normalizedProduct._id)) {
       api
         .post("/auth/wishlist/toggle", { productId: normalizedProduct._id })
         .then(({ data }) => applyServerUserState(data))
