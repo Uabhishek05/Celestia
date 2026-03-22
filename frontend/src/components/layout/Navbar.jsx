@@ -67,8 +67,8 @@ export default function Navbar({ onMenuToggle }) {
             )}
           </Link>
 
-          {/* User Profile (Desktop sm+) */}
-          <Link to="/profile" className="hidden sm:block rounded-full p-1.5 sm:p-2 hover:bg-white/10 transition">
+          {/* User Profile - Always visible */}
+          <Link to={user ? "/profile" : "/auth"} className="rounded-full p-1.5 sm:p-2 hover:bg-white/10 transition">
             <User2 className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>
 
