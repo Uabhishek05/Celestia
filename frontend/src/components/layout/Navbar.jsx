@@ -51,32 +51,22 @@ export default function Navbar({ onMenuToggle }) {
         </div>
 
         {/* Mobile + Desktop Actions */}
-        <div className="flex items-center justify-end gap-1 sm:gap-2">
+        <div className="flex items-center justify-end gap-0.5 sm:gap-2">
           {/* Dark Mode Toggle */}
-          <button onClick={() => setDarkMode(!darkMode)} className="rounded-full p-1.5 sm:p-2 hover:bg-white/10 transition">
+          <button onClick={() => setDarkMode(!darkMode)} className="rounded-full p-1 sm:p-2 hover:bg-white/10 transition flex-shrink-0" title={darkMode ? "Light Mode" : "Dark Mode"}>
             {darkMode ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
           </button>
 
-          {/* Wishlist (Mobile) */}
-          <Link to="/wishlist" className="relative rounded-full p-1.5 sm:p-2 lg:hidden hover:bg-white/10 transition">
-            <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
-            {wishlist.length > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 rounded-full bg-wine px-1 text-[8px] sm:text-[10px] text-white">
-                {wishlist.length}
-              </span>
-            )}
-          </Link>
-
           {/* User Profile - Always visible */}
-          <Link to={user ? "/profile" : "/auth"} className="rounded-full p-1.5 sm:p-2 hover:bg-white/10 transition">
+          <Link to={user ? "/profile" : "/auth"} className="rounded-full p-1 sm:p-2 hover:bg-white/10 transition flex-shrink-0" title={user ? "Profile" : "Login"}>
             <User2 className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>
 
           {/* Cart */}
-          <Link to="/cart" className="relative rounded-full p-1.5 sm:p-2 hover:bg-white/10 transition">
+          <Link to="/cart" className="relative rounded-full p-1 sm:p-2 hover:bg-white/10 transition flex-shrink-0" title="Shopping Cart">
             <ShoppingBag className="h-4 w-4 sm:h-5 sm:w-5" />
             {cartItems.length > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 rounded-full bg-wine px-1 text-[8px] sm:text-[10px] text-white">
+              <span className="absolute -right-0.5 -top-0.5 rounded-full bg-wine px-0.5 text-[7px] sm:text-[10px] text-white font-semibold">
                 {cartItems.length}
               </span>
             )}
