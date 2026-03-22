@@ -12,7 +12,21 @@ import adminRoutes from "./routes/adminRoutes.js";
 import couponRoutes from "./routes/couponRoutes.js";
 
 const app = express();
-const allowedOrigins = [process.env.CLIENT_URL, "http://localhost:5173", "http://127.0.0.1:5173"].filter(Boolean);
+const configuredOrigins = [
+  process.env.CLIENT_URL,
+  ...(process.env.CLIENT_URLS || "").split(",")
+].map((value) => value?.trim()).filter(Boolean);
+const allowedOrigins = [...new Set([...configuredOrigins, "http://localhost:5173", "http://127.0.0.1:5173"])];
+
+function isAllowedOrigin(origin) {
+  if (!origin || allowedOrigins.includes(origin)) {
+    return true;
+  }
+
+  // Allow Celestia Vercel production/preview domains without opening every origin.
+  return /^https:\/\/celestia[-a-z0-9]*\.vercel\.app$/i.test(origin);
+}
+
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 300,
@@ -32,7 +46,7 @@ app.use(
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (isAllowedOrigin(origin)) {
         callback(null, true);
         return;
       }
