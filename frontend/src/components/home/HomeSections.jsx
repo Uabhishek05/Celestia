@@ -6,11 +6,11 @@ import ProductCard from "../product/ProductCard";
 
 function Section({ title, eyebrow, children }) {
   return (
-    <section className="container-shell py-10 md:py-14">
-      <div className="mb-8 flex items-end justify-between gap-4">
+    <section className="container-shell py-6 sm:py-10 md:py-14">
+      <div className="mb-4 sm:mb-8 flex items-end justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-clay">{eyebrow}</p>
-          <h2 className="section-title mt-2">{title}</h2>
+          <h2 className="section-title mt-1 sm:mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{title}</h2>
         </div>
       </div>
       {children}

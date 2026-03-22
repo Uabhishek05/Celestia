@@ -218,26 +218,26 @@ export default function AuthPage({ initialMode = "login" }) {
         path={mode === "login" ? "/auth" : "/register"}
         noindex
       />
-      <div className="mx-auto max-w-xl glass-panel p-8">
+      <div className="mx-auto w-full max-w-xl glass-panel p-4 sm:p-8">
         <div className="mx-auto flex w-fit rounded-full border border-white/20 bg-white/40 p-1 dark:bg-white/5">
           <button
             type="button"
             onClick={() => handleSwitchMode("login")}
-            className={mode === "login" ? "btn-primary px-6 py-2 text-sm" : "rounded-full px-6 py-2 text-sm"}
+            className={mode === "login" ? "btn-primary px-3 py-2 text-xs sm:px-6 sm:py-2 sm:text-sm" : "rounded-full px-3 py-2 text-xs sm:px-6 sm:py-2 sm:text-sm"}
           >
             Login
           </button>
           <button
             type="button"
             onClick={() => handleSwitchMode("signup")}
-            className={mode === "signup" ? "btn-primary px-6 py-2 text-sm" : "rounded-full px-6 py-2 text-sm"}
+            className={mode === "signup" ? "btn-primary px-3 py-2 text-xs sm:px-6 sm:py-2 sm:text-sm" : "rounded-full px-3 py-2 text-xs sm:px-6 sm:py-2 sm:text-sm"}
           >
             Register
           </button>
         </div>
 
-        <h1 className="section-title mt-6 text-center">{mode === "login" ? "Welcome back" : "Create your account"}</h1>
-        <p className="mt-3 text-center text-sm text-ink/65 dark:text-pearl/65">
+        <h1 className="section-title mt-4 text-center text-2xl sm:mt-6 sm:text-3xl md:text-5xl">{mode === "login" ? "Welcome back" : "Create your account"}</h1>
+        <p className="mt-2 text-center text-xs sm:mt-3 sm:text-sm text-ink/65 dark:text-pearl/65">
           {mode === "login"
             ? "Login with your email or continue with Google."
             : "Register as a customer, or use the seeded admin credentials below."}
@@ -248,22 +248,22 @@ export default function AuthPage({ initialMode = "login" }) {
           </div>
         ) : null}
 
-        <form onSubmit={submit} className="mt-6 space-y-4">
+        <form onSubmit={submit} className="mt-4 space-y-3 sm:mt-6 sm:space-y-4">
           {mode === "signup" ? (
             <input
               placeholder="Full name"
               value={form.name}
-              className="glass-panel w-full px-4 py-3 outline-none"
+              className="glass-panel w-full px-3 py-2 text-sm sm:px-4 sm:py-3 outline-none"
               onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
             />
           ) : null}
           <input
             placeholder="Email"
             value={form.email}
-            className="glass-panel w-full px-4 py-3 outline-none"
+            className="glass-panel w-full px-3 py-2 text-sm sm:px-4 sm:py-3 outline-none"
             onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
           />
-          <div className="glass-panel flex items-center gap-3 px-4 py-3">
+          <div className="glass-panel flex items-center gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -274,13 +274,13 @@ export default function AuthPage({ initialMode = "login" }) {
             <button
               type="button"
               onClick={() => setShowPassword((current) => !current)}
-              className="rounded-full p-2 text-clay transition hover:bg-white/20 hover:text-wine dark:text-pearl/70 dark:hover:bg-white/10 dark:hover:text-pearl"
+              className="rounded-full p-1.5 sm:p-2 text-clay transition hover:bg-white/20 hover:text-wine dark:text-pearl/70 dark:hover:bg-white/10 dark:hover:text-pearl"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              {showPassword ? <EyeOff className="h-3 w-3 sm:h-4 sm:w-4" /> : <Eye className="h-3 w-3 sm:h-4 sm:w-4" />}
             </button>
           </div>
-          <button className="btn-primary w-full" disabled={submitting}>
+          <button className="btn-primary w-full text-sm sm:text-base" disabled={submitting}>
             {submitting ? "Please wait..." : mode === "login" ? "Login" : "Create account"}
           </button>
           <div ref={googleButtonRef} className="sr-only" aria-hidden="true" />
