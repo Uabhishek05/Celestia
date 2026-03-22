@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cd5"
+  },
+  "slug": "earrings",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.322Z"
+  },
+  "description": "Statement and everyday earrings",
+  "isActive": true,
+  "name": "Earrings",
+  "sortOrder": 1,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.035Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cd6"
+  },
+  "slug": "necklaces",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.326Z"
+  },
+  "description": "Layered and premium necklaces",
+  "isActive": true,
+  "name": "Necklaces",
+  "sortOrder": 2,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.049Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cd7"
+  },
+  "slug": "bracelets",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.328Z"
+  },
+  "description": "Charm and signature bracelets",
+  "isActive": true,
+  "name": "Bracelets",
+  "sortOrder": 3,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.052Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cd8"
+  },
+  "slug": "phone-charms",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.329Z"
+  },
+  "description": "Decorative phone charms",
+  "isActive": true,
+  "name": "Phone Charms",
+  "sortOrder": 4,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.055Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cd9"
+  },
+  "slug": "keychains",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.330Z"
+  },
+  "description": "Personalized keychains",
+  "isActive": true,
+  "name": "Keychains",
+  "sortOrder": 5,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.058Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cda"
+  },
+  "slug": "hair-accessories",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.331Z"
+  },
+  "description": "Luxury hair accessories",
+  "isActive": true,
+  "name": "Hair Accessories",
+  "sortOrder": 6,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.060Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cdb"
+  },
+  "slug": "gift-hampers",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.333Z"
+  },
+  "description": "Curated gift hampers",
+  "isActive": true,
+  "name": "Gift Hampers",
+  "sortOrder": 7,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.063Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cdc"
+  },
+  "slug": "handmade-cards",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.334Z"
+  },
+  "description": "Handmade greeting cards",
+  "isActive": true,
+  "name": "Handmade Cards",
+  "sortOrder": 8,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.065Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69bb0e1b07944878d4a25cdd"
+  },
+  "slug": "accessories",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.335Z"
+  },
+  "description": "General accessories",
+  "isActive": true,
+  "name": "Accessories",
+  "sortOrder": 9,
+  "updatedAt": {
+    "$date": "2026-03-19T20:33:16.067Z"
+  }
+}]

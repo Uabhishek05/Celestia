@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "69bb0e1b2f36ae410c341545"
+  },
+  "name": "Celestia Admin",
+  "email": "admin@celestia.com",
+  "password": "$2b$10$9dBz.Wc.LKXbqgjV7F3x6u66DN3JvBn9kpTJzL2hBkTINQ.H2FDAi",
+  "passwordResetToken": null,
+  "passwordResetExpiresAt": null,
+  "role": "admin",
+  "isBlocked": false,
+  "wishlist": [],
+  "cart": [],
+  "createdAt": {
+    "$date": "2026-03-18T20:42:03.406Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-19T20:31:31.198Z"
+  },
+  "__v": 0
+}]
